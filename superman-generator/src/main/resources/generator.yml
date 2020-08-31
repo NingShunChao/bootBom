@@ -1,0 +1,6 @@
+# 代码生成
+gen:
+  author: superman # 作者
+  packageName: com.superman.system # 默认生成包路径 system 需改成自己的模块名称
+  autoRemovePre: false # 自动去除表前缀，默认是false
+  tablePrefix: sys_ # 表前缀（生成类名不会包含表前缀，多个用逗号分隔）
