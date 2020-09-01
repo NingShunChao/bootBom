@@ -148,11 +148,13 @@ public class SysDept extends BaseEntity
         this.status = status;
     }
 
+    @Override
     public String getDelFlag()
     {
         return delFlag;
     }
 
+    @Override
     public void setDelFlag(String delFlag)
     {
         this.delFlag = delFlag;

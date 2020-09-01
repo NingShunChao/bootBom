@@ -16,21 +16,21 @@ public class GenConfig {
 
   /** 作者 */
   @Value("${author}")
-  private   String author;
+  private static String author;
 
   /** 生成包路径 */
   @Value("${packageName}")
-  private  String packageName;
+  private static  String packageName;
 
   /** 自动去除表前缀，默认是false */
   @Value("${autoRemovePre}")
-  private  boolean autoRemovePre;
+  private static boolean autoRemovePre;
 
   /** 表前缀(类名不会包含表前缀) */
   @Value("${tablePrefix}")
-  private  String tablePrefix;
+  private static String tablePrefix;
 
-  public String getAuthor() {
+  public static String getAuthor() {
     return author;
   }
 
@@ -38,7 +38,7 @@ public class GenConfig {
     this.author = author;
   }
 
-  public String getPackageName() {
+  public static String getPackageName() {
     return packageName;
   }
 
@@ -46,7 +46,7 @@ public class GenConfig {
     this.packageName = packageName;
   }
 
-  public boolean isAutoRemovePre() {
+  public static boolean getAutoRemovePre() {
     return autoRemovePre;
   }
 
@@ -54,7 +54,7 @@ public class GenConfig {
     this.autoRemovePre = autoRemovePre;
   }
 
-  public String getTablePrefix() {
+  public static String getTablePrefix() {
     return tablePrefix;
   }
 

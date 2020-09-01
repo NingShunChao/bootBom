@@ -1,18 +1,18 @@
 package com.superman.system.domain;
 
+import com.superman.common.enums.ColumnType;
 import java.util.Date;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.ruoyi.common.annotation.Excel;
-import com.ruoyi.common.annotation.Excel.ColumnType;
-import com.ruoyi.common.core.domain.BaseEntity;
+import com.superman.common.annotation.Excel;
+import com.superman.common.core.domain.BaseEntity;
 
 /**
  * 系统访问记录表 sys_logininfor
  * 
- * @author ruoyi
+ * @author superman
  */
 public class SysLogininfor extends BaseEntity
 {

@@ -53,6 +53,8 @@
     <poi.version>3.17</poi.version>
     <velocity.version>1.7</velocity.version>
     <activiti.version>6.0.0</activiti.version>
+    <ehcache.version>2.6.11</ehcache.version>
+    <ehcache-web.version>2.0.4</ehcache-web.version>
   </properties>
 
   <dependencyManagement>
@@ -259,33 +261,32 @@
       <version>${oshi.version}</version>
     </dependency>
 
+    <!--############ security config ##############  -->
     <!--Shiro核心框架 -->
     <dependency>
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-core</artifactId>
       <version>${shiro.version}</version>
     </dependency>
-
     <!-- shiro权限 -->
     <dependency>
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-spring</artifactId>
       <version>${shiro.version}</version>
     </dependency>
-
     <!-- Shiro使用EhCache缓存框架 -->
     <dependency>
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-ehcache</artifactId>
       <version>${shiro.version}</version>
     </dependency>
-
     <!-- shiro权限支持thymeleaf -->
     <dependency>
       <groupId>com.github.theborakompanioni</groupId>
       <artifactId>thymeleaf-extras-shiro</artifactId>
       <version>${thymeleaf.extras.shiro.version}</version>
     </dependency>
+    <!--############ security config ##############  -->
 
     <!-- 解析客户端操作系统、浏览器等 -->
     <dependency>
@@ -394,8 +395,8 @@
     <!--这个依赖用于生成代码做模版，默认是velocity-->
     <dependency>
       <groupId>org.apache.velocity</groupId>
-      <artifactId>velocity-engine-core</artifactId>
-      <version>2.0</version>
+      <artifactId>velocity</artifactId>
+      <version>${velocity.version}</version>
     </dependency>
     <dependency>
       <groupId>org.freemarker</groupId>
@@ -480,6 +481,19 @@
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
     </dependency>
+
+    <!-- ####################### Cache config ############################# -->
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-core</artifactId>
+      <version>${ehcache.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache-web</artifactId>
+      <version>${ehcache-web.version}</version>
+    </dependency>
+    <!-- ####################### Cache config #############################  -->
 
   </dependencies>
 

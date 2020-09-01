@@ -1,5 +1,6 @@
 package com.superman.generator.service.impl;
 
+import com.superman.common.utils.text.Convert;
 import com.superman.generator.domain.GenTableColumn;
 import com.superman.generator.mapper.GenTableColumnMapper;
 import com.superman.generator.service.IGenTableColumnService;

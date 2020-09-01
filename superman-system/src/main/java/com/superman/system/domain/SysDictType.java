@@ -1,19 +1,20 @@
 package com.superman.system.domain;
 
+import com.superman.common.core.domain.BaseEntity;
+import com.superman.common.enums.ColumnType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.ruoyi.common.annotation.Excel;
-import com.ruoyi.common.annotation.Excel.ColumnType;
-import com.ruoyi.common.core.domain.BaseEntity;
+import com.superman.common.annotation.Excel;
+import com.superman.common.core.domain.BaseEntity;
 
 /**
  * 字典类型表 sys_dict_type
  * 
- * @author ruoyi
+ * @author superman
  */
 public class SysDictType extends BaseEntity
 {

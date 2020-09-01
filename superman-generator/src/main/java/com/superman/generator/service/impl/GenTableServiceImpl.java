@@ -1,11 +1,16 @@
 package com.superman.generator.service.impl;
 
+import com.superman.common.constant.CommonConstant;
+import com.superman.common.constant.GenConstants;
+import com.superman.common.exception.BusinessException;
 import com.superman.common.utils.StringUtils;
+import com.superman.common.utils.text.Convert;
 import com.superman.generator.domain.GenTable;
 import com.superman.generator.domain.GenTableColumn;
 import com.superman.generator.mapper.GenTableColumnMapper;
 import com.superman.generator.mapper.GenTableMapper;
 import com.superman.generator.service.IGenTableService;
+import com.superman.generator.util.GenUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -259,7 +264,7 @@ public class GenTableServiceImpl implements IGenTableService
             {
                 // 添加到zip
                 zip.putNextEntry(new ZipEntry(VelocityUtils.getFileName(template, table)));
-                IOUtils.write(sw.toString(), zip, Constants.UTF8);
+                IOUtils.write(sw.toString(), zip, CommonConstant.UTF8);
                 IOUtils.closeQuietly(sw);
                 zip.flush();
                 zip.closeEntry();
@@ -301,7 +306,7 @@ public class GenTableServiceImpl implements IGenTableService
     /**
      * 设置主键列信息
      * 
-     * @param genTable 业务表信息
+     * @param table 业务表信息
      * @param columns 业务字段列表
      */
     public void setPkColumn(GenTable table, List<GenTableColumn> columns)

@@ -1,27 +1,27 @@
 package com.superman.system.domain;
 
+import com.superman.common.enums.ColumnType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.ruoyi.common.annotation.Excel;
-import com.ruoyi.common.annotation.Excel.ColumnType;
-import com.ruoyi.common.core.domain.BaseEntity;
+import com.superman.common.annotation.Excel;
+import com.superman.common.core.domain.BaseEntity;
 
 /**
  * 岗位表 sys_post
  * 
- * @author ruoyi
+ * @author superman
  */
 public class SysPost extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
     /** 岗位序号 */
-    @Excel(name = "岗位序号", cellType = ColumnType.NUMERIC)
-    private Long postId;
+    @Excel(name = "岗位序号", cellType = ColumnType.STRING)
+    private String postId;
 
     /** 岗位编码 */
     @Excel(name = "岗位编码")
@@ -42,12 +42,12 @@ public class SysPost extends BaseEntity
     /** 用户是否存在此岗位标识 默认不存在 */
     private boolean flag = false;
 
-    public Long getPostId()
+    public String getPostId()
     {
         return postId;
     }
 
-    public void setPostId(Long postId)
+    public void setPostId(String postId)
     {
         this.postId = postId;
     }

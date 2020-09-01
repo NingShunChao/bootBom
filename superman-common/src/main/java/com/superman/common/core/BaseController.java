@@ -110,7 +110,7 @@ public class BaseController {
    * @param list
    * @return
    */
-  protected TableDataInfo getDataTabelInfo(List<?> list){
+  protected TableDataInfo getDataTable(List<?> list){
     TableDataInfo responseData = new TableDataInfo();
     responseData.setCode(0);
     responseData.setRows(list);

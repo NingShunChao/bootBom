@@ -1,8 +1,16 @@
 package com.superman.generator.controller;
 
+import com.superman.common.annotation.Log;
+import com.superman.common.core.BaseController;
+import com.superman.common.core.domain.AjaxResult;
+import com.superman.common.core.page.TableDataInfo;
+import com.superman.common.enums.BusinessType;
+import com.superman.common.utils.text.Convert;
 import com.superman.generator.domain.GenTable;
+import com.superman.generator.domain.GenTableColumn;
 import com.superman.generator.service.IGenTableColumnService;
 import com.superman.generator.service.IGenTableService;
+import com.superman.common.utils.security.PermissionUtils;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -166,32 +174,32 @@ public class GenController extends BaseController
      * 生成代码
      */
     @RequiresPermissions("tool:gen:code")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
-    @GetMapping("/genCode/{tableName}")
-    public void genCode(HttpServletResponse response, @PathVariable("tableName") String tableName) throws IOException
+    @Log(title = "代码生成", businessType = BusinessType.GEN_CODE)
+    @GetMapping("/GEN_CODE/{tableName}")
+    public void GEN_CODE(HttpServletResponse response, @PathVariable("tableName") String tableName) throws IOException
     {
         byte[] data = genTableService.generatorCode(tableName);
-        genCode(response, data);
+        GEN_CODE(response, data);
     }
 
     /**
      * 批量生成代码
      */
     @RequiresPermissions("tool:gen:code")
-    @Log(title = "代码生成", businessType = BusinessType.GENCODE)
-    @GetMapping("/batchGenCode")
+    @Log(title = "代码生成", businessType = BusinessType.GEN_CODE)
+    @GetMapping("/batchGEN_CODE")
     @ResponseBody
-    public void batchGenCode(HttpServletResponse response, String tables) throws IOException
+    public void batchGEN_CODE(HttpServletResponse response, String tables) throws IOException
     {
         String[] tableNames = Convert.toStrArray(tables);
         byte[] data = genTableService.generatorCode(tableNames);
-        genCode(response, data);
+        GEN_CODE(response, data);
     }
 
     /**
      * 生成zip文件
      */
-    private void genCode(HttpServletResponse response, byte[] data) throws IOException
+    private void GEN_CODE(HttpServletResponse response, byte[] data) throws IOException
     {
         response.reset();
         response.setHeader("Content-Disposition", "attachment; filename=\"ruoyi.zip\"");
