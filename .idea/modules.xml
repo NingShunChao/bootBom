@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/boot.iml" filepath="$PROJECT_DIR$/boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/superman-activity/superman-activity.iml" filepath="$PROJECT_DIR$/superman-activity/superman-activity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/superman-application/superman-application.iml" filepath="$PROJECT_DIR$/superman-application/superman-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/superman-common/superman-common.iml" filepath="$PROJECT_DIR$/superman-common/superman-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/superman-framework/superman-framework.iml" filepath="$PROJECT_DIR$/superman-framework/superman-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/superman-generator/superman-generator.iml" filepath="$PROJECT_DIR$/superman-generator/superman-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/superman-quartz/superman-quartz.iml" filepath="$PROJECT_DIR$/superman-quartz/superman-quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/superman-system/superman-system.iml" filepath="$PROJECT_DIR$/superman-system/superman-system.iml" />
+    </modules>
+  </component>
+</project>
