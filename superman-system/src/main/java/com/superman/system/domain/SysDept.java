@@ -1,6 +1,6 @@
 package com.superman.system.domain;
 
-import com.superman.common.core.domain.BaseEntity;
+import com.superman.core.domain.BaseEntity;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -19,11 +19,8 @@ public class SysDept extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 部门ID */
-    private Long deptId;
-
     /** 父部门ID */
-    private Long parentId;
+    private String parentId;
 
     /** 祖级列表 */
     private String ancestors;
@@ -52,22 +49,13 @@ public class SysDept extends BaseEntity
     /** 父部门名称 */
     private String parentName;
 
-    public Long getDeptId()
-    {
-        return deptId;
-    }
 
-    public void setDeptId(Long deptId)
-    {
-        this.deptId = deptId;
-    }
-
-    public Long getParentId()
+    public String getParentId()
     {
         return parentId;
     }
 
-    public void setParentId(Long parentId)
+    public void setParentId(String parentId)
     {
         this.parentId = parentId;
     }
@@ -173,7 +161,7 @@ public class SysDept extends BaseEntity
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("deptId", getDeptId())
+            .append("deptId", getId())
             .append("parentId", getParentId())
             .append("ancestors", getAncestors())
             .append("deptName", getDeptName())

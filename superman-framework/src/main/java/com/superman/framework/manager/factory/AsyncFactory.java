@@ -1,10 +1,10 @@
 package com.superman.framework.manager.factory;
 
-import com.superman.common.constant.CommonConstant;
-import com.superman.common.utils.AddressUtils;
-import com.superman.common.utils.ServletUtils;
-import com.superman.common.utils.StringUtils;
-import com.superman.common.utils.spring.SpringUtils;
+import com.superman.constant.CommonConstant;
+import com.superman.utils.AddressUtils;
+import com.superman.utils.ServletUtils;
+import com.superman.utils.StringUtils;
+import com.superman.utils.spring.SpringUtils;
 import com.superman.framework.shiro.session.OnlineSession;
 import com.superman.framework.util.LogUtils;
 import com.superman.framework.util.ShiroUtils;

@@ -1,5 +1,6 @@
 package com.superman.system.service.impl;
 
+import com.superman.utils.text.Convert;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -7,19 +8,18 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ruoyi.common.constant.Constants;
-import com.ruoyi.common.constant.UserConstants;
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.common.utils.CacheUtils;
-import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.system.domain.SysConfig;
-import com.ruoyi.system.mapper.SysConfigMapper;
-import com.ruoyi.system.service.ISysConfigService;
+import com.superman.constant.CommonConstant;
+import com.superman.constant.UserConstant;
+import com.superman.utils.CacheUtils;
+import com.superman.utils.StringUtils;
+import com.superman.system.domain.SysConfig;
+import com.superman.system.mapper.SysConfigMapper;
+import com.superman.system.service.ISysConfigService;
 
 /**
  * 参数配置 服务层实现
  * 
- * @author ruoyi
+ * @author superman
  */
 @Service
 public class SysConfigServiceImpl implements ISysConfigService
@@ -47,10 +47,10 @@ public class SysConfigServiceImpl implements ISysConfigService
      * @return 参数配置信息
      */
     @Override
-    public SysConfig selectConfigById(Long configId)
+    public SysConfig selectConfigById(String configId)
     {
         SysConfig config = new SysConfig();
-        config.setConfigId(configId);
+        config.setId(configId);
         return configMapper.selectConfig(config);
     }
 
@@ -161,13 +161,13 @@ public class SysConfigServiceImpl implements ISysConfigService
     @Override
     public String checkConfigKeyUnique(SysConfig config)
     {
-        Long configId = StringUtils.isNull(config.getConfigId()) ? -1L : config.getConfigId();
+        String configId = StringUtils.isNull(config.getId()) ? "-1" : config.getId();
         SysConfig info = configMapper.checkConfigKeyUnique(config.getConfigKey());
-        if (StringUtils.isNotNull(info) && info.getConfigId().longValue() != configId.longValue())
+        if (StringUtils.isNotNull(info) && !info.getId().equals(configId))
         {
-            return UserConstants.CONFIG_KEY_NOT_UNIQUE;
+            return UserConstant.CONFIG_KEY_NOT_UNIQUE;
         }
-        return UserConstants.CONFIG_KEY_UNIQUE;
+        return UserConstant.CONFIG_KEY_UNIQUE;
     }
 
     /**
@@ -177,7 +177,7 @@ public class SysConfigServiceImpl implements ISysConfigService
      */
     private String getCacheName()
     {
-        return Constants.SYS_CONFIG_CACHE;
+        return CommonConstant.SYS_CONFIG_CACHE;
     }
 
     /**
@@ -188,6 +188,6 @@ public class SysConfigServiceImpl implements ISysConfigService
      */
     private String getCacheKey(String configKey)
     {
-        return Constants.SYS_CONFIG_KEY + configKey;
+        return CommonConstant.SYS_CONFIG_KEY + configKey;
     }
 }

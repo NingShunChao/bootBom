@@ -1,10 +1,11 @@
 package com.superman.system.service;
 
+import com.superman.core.domain.ZtreeDomain;
+import com.superman.system.domain.SysDept;
+import com.superman.system.domain.SysRole;
 import java.util.List;
 
-import com.ruoyi.common.core.domain.Ztree;
-import com.ruoyi.system.domain.SysDept;
-import com.ruoyi.system.domain.SysRole;
+
 
 /**
  * 部门管理 服务层
@@ -27,7 +28,7 @@ public interface ISysDeptService
      * @param dept 部门信息
      * @return 所有部门信息
      */
-    public List<Ztree> selectDeptTree(SysDept dept);
+    public List<ZtreeDomain> selectDeptTree(SysDept dept);
 
     /**
      * 根据角色ID查询菜单
@@ -35,7 +36,7 @@ public interface ISysDeptService
      * @param role 角色对象
      * @return 菜单列表
      */
-    public List<Ztree> roleDeptTreeData(SysRole role);
+    public List<ZtreeDomain> roleDeptTreeData(SysRole role);
 
     /**
      * 查询部门人数
@@ -43,7 +44,7 @@ public interface ISysDeptService
      * @param parentId 父部门ID
      * @return 结果
      */
-    public int selectDeptCount(Long parentId);
+    public int selectDeptCount(String parentId);
 
     /**
      * 查询部门是否存在用户
@@ -51,7 +52,7 @@ public interface ISysDeptService
      * @param deptId 部门ID
      * @return 结果 true 存在 false 不存在
      */
-    public boolean checkDeptExistUser(Long deptId);
+    public boolean checkDeptExistUser(String deptId);
 
     /**
      * 删除部门管理信息
@@ -59,7 +60,7 @@ public interface ISysDeptService
      * @param deptId 部门ID
      * @return 结果
      */
-    public int deleteDeptById(Long deptId);
+    public int deleteDeptById(String deptId);
 
     /**
      * 新增保存部门信息
@@ -83,7 +84,7 @@ public interface ISysDeptService
      * @param deptId 部门ID
      * @return 部门信息
      */
-    public SysDept selectDeptById(Long deptId);
+    public SysDept selectDeptById(String deptId);
 
     /**
      * 校验部门名称是否唯一

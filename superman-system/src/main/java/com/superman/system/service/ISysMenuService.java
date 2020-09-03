@@ -1,6 +1,6 @@
 package com.superman.system.service;
 
-import com.superman.common.core.domain.ZtreeDomain;
+import com.superman.core.domain.ZtreeDomain;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -32,7 +32,7 @@ public interface ISysMenuService
      * @param userId 用户ID
      * @return 菜单列表
      */
-    public List<SysMenu> selectMenuList(SysMenu menu, Long userId);
+    public List<SysMenu> selectMenuList(SysMenu menu, String userId);
 
     /**
      * 查询菜单集合
@@ -40,7 +40,7 @@ public interface ISysMenuService
      * @param userId 用户ID
      * @return 所有菜单信息
      */
-    public List<SysMenu> selectMenuAll(Long userId);
+    public List<SysMenu> selectMenuAll(String userId);
 
     /**
      * 根据用户ID查询权限
@@ -57,7 +57,7 @@ public interface ISysMenuService
      * @param userId 用户ID
      * @return 菜单列表
      */
-    public List<ZtreeDomain> roleMenuTreeData(SysRole role, Long userId);
+    public List<ZtreeDomain> roleMenuTreeData(SysRole role, String userId);
 
     /**
      * 查询所有菜单信息
@@ -65,7 +65,7 @@ public interface ISysMenuService
      * @param userId 用户ID
      * @return 菜单列表
      */
-    public List<ZtreeDomain> menuTreeData(Long userId);
+    public List<ZtreeDomain> menuTreeData(String userId);
 
     /**
      * 查询系统所有权限
@@ -73,7 +73,7 @@ public interface ISysMenuService
      * @param userId 用户ID
      * @return 权限列表
      */
-    public Map<String, String> selectPermsAll(Long userId);
+    public Map<String, String> selectPermsAll(String userId);
 
     /**
      * 删除菜单管理信息
@@ -81,7 +81,7 @@ public interface ISysMenuService
      * @param menuId 菜单ID
      * @return 结果
      */
-    public int deleteMenuById(Long menuId);
+    public int deleteMenuById(String menuId);
 
     /**
      * 根据菜单ID查询信息
@@ -89,7 +89,7 @@ public interface ISysMenuService
      * @param menuId 菜单ID
      * @return 菜单信息
      */
-    public SysMenu selectMenuById(Long menuId);
+    public SysMenu selectMenuById(String menuId);
 
     /**
      * 查询菜单数量
@@ -97,7 +97,7 @@ public interface ISysMenuService
      * @param parentId 菜单父ID
      * @return 结果
      */
-    public int selectCountMenuByParentId(Long parentId);
+    public int selectCountMenuByParentId(String parentId);
 
     /**
      * 查询菜单使用数量
@@ -105,7 +105,7 @@ public interface ISysMenuService
      * @param menuId 菜单ID
      * @return 结果
      */
-    public int selectCountRoleMenuByMenuId(Long menuId);
+    public int selectCountRoleMenuByMenuId(String menuId);
 
     /**
      * 新增保存菜单信息

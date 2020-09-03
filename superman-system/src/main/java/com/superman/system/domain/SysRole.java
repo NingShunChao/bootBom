@@ -1,8 +1,8 @@
 package com.superman.system.domain;
 
-import com.superman.common.annotation.Excel;
-import com.superman.common.core.domain.BaseEntity;
-import com.superman.common.enums.ColumnType;
+import com.superman.annotation.Excel;
+import com.superman.core.domain.BaseEntity;
+import com.superman.enums.ColumnType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 

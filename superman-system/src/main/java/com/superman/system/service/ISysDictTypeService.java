@@ -1,10 +1,10 @@
 package com.superman.system.service;
 
+import com.superman.core.domain.ZtreeDomain;
+import com.superman.system.domain.SysDictData;
+import com.superman.system.domain.SysDictType;
 import java.util.List;
 
-import com.ruoyi.common.core.domain.Ztree;
-import com.ruoyi.system.domain.SysDictData;
-import com.ruoyi.system.domain.SysDictType;
 
 /**
  * 字典 业务层
@@ -42,7 +42,7 @@ public interface ISysDictTypeService
      * @param dictId 字典类型ID
      * @return 字典类型
      */
-    public SysDictType selectDictTypeById(Long dictId);
+    public SysDictType selectDictTypeById(String dictId);
 
     /**
      * 根据字典类型查询信息
@@ -96,5 +96,5 @@ public interface ISysDictTypeService
      * @param dictType 字典类型
      * @return 所有字典类型
      */
-    public List<Ztree> selectDictTree(SysDictType dictType);
+    public List<ZtreeDomain> selectDictTree(SysDictType dictType);
 }

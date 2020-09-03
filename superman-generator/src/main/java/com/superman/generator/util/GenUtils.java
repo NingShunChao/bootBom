@@ -1,7 +1,7 @@
 package com.superman.generator.util;
 
-import com.superman.common.constant.GenConstants;
-import com.superman.common.utils.StringUtils;
+import com.superman.constant.GenConstants;
+import com.superman.utils.StringUtils;
 import com.superman.generator.config.GenConfig;
 import com.superman.generator.domain.GenTable;
 import com.superman.generator.domain.GenTableColumn;

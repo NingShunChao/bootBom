@@ -1,6 +1,6 @@
 package com.superman.framework.interceptor.impl;
 
-import com.superman.common.json.JSON;
+import com.superman.json.JSON;
 import com.superman.framework.interceptor.RepeatSubmitInterceptor;
 import java.util.HashMap;
 import java.util.Map;

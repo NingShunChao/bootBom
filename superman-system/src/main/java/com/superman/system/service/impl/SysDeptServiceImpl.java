@@ -1,5 +1,14 @@
 package com.superman.system.service.impl;
 
+import com.superman.annotation.DataScope;
+import com.superman.constant.UserConstant;
+import com.superman.core.domain.ZtreeDomain;
+import com.superman.exception.BusinessException;
+import com.superman.system.domain.SysDept;
+import com.superman.system.domain.SysRole;
+import com.superman.system.mapper.SysDeptMapper;
+import com.superman.system.service.ISysDeptService;
+import com.superman.utils.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,15 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ruoyi.common.annotation.DataScope;
-import com.ruoyi.common.constant.UserConstants;
-import com.ruoyi.common.core.domain.Ztree;
-import com.ruoyi.common.exception.BusinessException;
-import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.system.domain.SysDept;
-import com.ruoyi.system.domain.SysRole;
-import com.ruoyi.system.mapper.SysDeptMapper;
-import com.ruoyi.system.service.ISysDeptService;
+
 
 /**
  * 部门管理 服务实现
@@ -49,10 +50,10 @@ public class SysDeptServiceImpl implements ISysDeptService
      */
     @Override
     @DataScope(deptAlias = "d")
-    public List<Ztree> selectDeptTree(SysDept dept)
+    public List<ZtreeDomain> selectDeptTree(SysDept dept)
     {
         List<SysDept> deptList = deptMapper.selectDeptList(dept);
-        List<Ztree> ztrees = initZtree(deptList);
+        List<ZtreeDomain> ztrees = initZtree(deptList);
         return ztrees;
     }
 
@@ -63,10 +64,10 @@ public class SysDeptServiceImpl implements ISysDeptService
      * @return 部门列表（数据权限）
      */
     @Override
-    public List<Ztree> roleDeptTreeData(SysRole role)
+    public List<ZtreeDomain> roleDeptTreeData(SysRole role)
     {
-        Long roleId = role.getRoleId();
-        List<Ztree> ztrees = new ArrayList<Ztree>();
+        String roleId = role.getRoleId();
+        List<ZtreeDomain> ztrees = new ArrayList<ZtreeDomain>();
         List<SysDept> deptList = selectDeptList(new SysDept());
         if (StringUtils.isNotNull(roleId))
         {
@@ -86,7 +87,7 @@ public class SysDeptServiceImpl implements ISysDeptService
      * @param deptList 部门列表
      * @return 树结构列表
      */
-    public List<Ztree> initZtree(List<SysDept> deptList)
+    public List<ZtreeDomain> initZtree(List<SysDept> deptList)
     {
         return initZtree(deptList, null);
     }
@@ -98,23 +99,23 @@ public class SysDeptServiceImpl implements ISysDeptService
      * @param roleDeptList 角色已存在菜单列表
      * @return 树结构列表
      */
-    public List<Ztree> initZtree(List<SysDept> deptList, List<String> roleDeptList)
+    public List<ZtreeDomain> initZtree(List<SysDept> deptList, List<String> roleDeptList)
     {
 
-        List<Ztree> ztrees = new ArrayList<Ztree>();
+        List<ZtreeDomain> ztrees = new ArrayList<ZtreeDomain>();
         boolean isCheck = StringUtils.isNotNull(roleDeptList);
         for (SysDept dept : deptList)
         {
-            if (UserConstants.DEPT_NORMAL.equals(dept.getStatus()))
+            if (UserConstant.DEPT_NORMAL.equals(dept.getStatus()))
             {
-                Ztree ztree = new Ztree();
-                ztree.setId(dept.getDeptId());
+                ZtreeDomain ztree = new ZtreeDomain();
+                ztree.setId(dept.getId());
                 ztree.setpId(dept.getParentId());
                 ztree.setName(dept.getDeptName());
                 ztree.setTitle(dept.getDeptName());
                 if (isCheck)
                 {
-                    ztree.setChecked(roleDeptList.contains(dept.getDeptId() + dept.getDeptName()));
+                    ztree.setChecked(roleDeptList.contains(dept.getId() + dept.getDeptName()));
                 }
                 ztrees.add(ztree);
             }
@@ -129,7 +130,7 @@ public class SysDeptServiceImpl implements ISysDeptService
      * @return 结果
      */
     @Override
-    public int selectDeptCount(Long parentId)
+    public int selectDeptCount(String parentId)
     {
         SysDept dept = new SysDept();
         dept.setParentId(parentId);
@@ -143,7 +144,7 @@ public class SysDeptServiceImpl implements ISysDeptService
      * @return 结果 true 存在 false 不存在
      */
     @Override
-    public boolean checkDeptExistUser(Long deptId)
+    public boolean checkDeptExistUser(String deptId)
     {
         int result = deptMapper.checkDeptExistUser(deptId);
         return result > 0 ? true : false;
@@ -156,7 +157,7 @@ public class SysDeptServiceImpl implements ISysDeptService
      * @return 结果
      */
     @Override
-    public int deleteDeptById(Long deptId)
+    public int deleteDeptById(String deptId)
     {
         return deptMapper.deleteDeptById(deptId);
     }
@@ -172,7 +173,7 @@ public class SysDeptServiceImpl implements ISysDeptService
     {
         SysDept info = deptMapper.selectDeptById(dept.getParentId());
         // 如果父节点不为"正常"状态,则不允许新增子节点
-        if (!UserConstants.DEPT_NORMAL.equals(info.getStatus()))
+        if (!UserConstant.DEPT_NORMAL.equals(info.getStatus()))
         {
             throw new BusinessException("部门停用，不允许新增");
         }
@@ -191,16 +192,16 @@ public class SysDeptServiceImpl implements ISysDeptService
     public int updateDept(SysDept dept)
     {
         SysDept newParentDept = deptMapper.selectDeptById(dept.getParentId());
-        SysDept oldDept = selectDeptById(dept.getDeptId());
+        SysDept oldDept = selectDeptById(dept.getId());
         if (StringUtils.isNotNull(newParentDept) && StringUtils.isNotNull(oldDept))
         {
-            String newAncestors = newParentDept.getAncestors() + "," + newParentDept.getDeptId();
+            String newAncestors = newParentDept.getAncestors() + "," + newParentDept.getId();
             String oldAncestors = oldDept.getAncestors();
             dept.setAncestors(newAncestors);
-            updateDeptChildren(dept.getDeptId(), newAncestors, oldAncestors);
+            updateDeptChildren(dept.getId(), newAncestors, oldAncestors);
         }
         int result = deptMapper.updateDept(dept);
-        if (UserConstants.DEPT_NORMAL.equals(dept.getStatus()))
+        if (UserConstant.DEPT_NORMAL.equals(dept.getStatus()))
         {
             // 如果该部门是启用状态，则启用该部门的所有上级部门
             updateParentDeptStatus(dept);
@@ -216,7 +217,7 @@ public class SysDeptServiceImpl implements ISysDeptService
     private void updateParentDeptStatus(SysDept dept)
     {
         String updateBy = dept.getUpdateBy();
-        dept = deptMapper.selectDeptById(dept.getDeptId());
+        dept = deptMapper.selectDeptById(dept.getId());
         dept.setUpdateBy(updateBy);
         deptMapper.updateDeptStatus(dept);
     }
@@ -228,7 +229,7 @@ public class SysDeptServiceImpl implements ISysDeptService
      * @param newAncestors 新的父ID集合
      * @param oldAncestors 旧的父ID集合
      */
-    public void updateDeptChildren(Long deptId, String newAncestors, String oldAncestors)
+    public void updateDeptChildren(String deptId, String newAncestors, String oldAncestors)
     {
         List<SysDept> children = deptMapper.selectChildrenDeptById(deptId);
         for (SysDept child : children)
@@ -248,7 +249,7 @@ public class SysDeptServiceImpl implements ISysDeptService
      * @return 部门信息
      */
     @Override
-    public SysDept selectDeptById(Long deptId)
+    public SysDept selectDeptById(String deptId)
     {
         return deptMapper.selectDeptById(deptId);
     }
@@ -262,12 +263,12 @@ public class SysDeptServiceImpl implements ISysDeptService
     @Override
     public String checkDeptNameUnique(SysDept dept)
     {
-        Long deptId = StringUtils.isNull(dept.getDeptId()) ? -1L : dept.getDeptId();
+        String deptId = StringUtils.isNull(dept.getId()) ? "-1" : dept.getId();
         SysDept info = deptMapper.checkDeptNameUnique(dept.getDeptName(), dept.getParentId());
-        if (StringUtils.isNotNull(info) && info.getDeptId().longValue() != deptId.longValue())
+        if (StringUtils.isNotNull(info) && !info.getId().equals(deptId))
         {
-            return UserConstants.DEPT_NAME_NOT_UNIQUE;
+            return UserConstant.DEPT_NAME_NOT_UNIQUE;
         }
-        return UserConstants.DEPT_NAME_UNIQUE;
+        return UserConstant.DEPT_NAME_UNIQUE;
     }
 }

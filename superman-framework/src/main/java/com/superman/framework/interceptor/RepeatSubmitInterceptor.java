@@ -1,9 +1,9 @@
 package com.superman.framework.interceptor;
 
-import com.superman.common.annotation.RepeatSubmit;
-import com.superman.common.core.domain.AjaxResult;
-import com.superman.common.json.JSON;
-import com.superman.common.utils.ServletUtils;
+import com.superman.annotation.RepeatSubmit;
+import com.superman.core.domain.AjaxResult;
+import com.superman.json.JSON;
+import com.superman.utils.ServletUtils;
 import java.lang.reflect.Method;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

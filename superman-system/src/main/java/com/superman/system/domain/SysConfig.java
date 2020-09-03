@@ -1,14 +1,13 @@
 package com.superman.system.domain;
 
-import com.superman.common.enums.ColumnType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.superman.common.annotation.Excel;
-import com.superman.common.core.domain.BaseEntity;
+import com.superman.annotation.Excel;
+import com.superman.core.domain.BaseEntity;
 
 /**
  * 参数配置表 sys_config
@@ -18,10 +17,6 @@ import com.superman.common.core.domain.BaseEntity;
 public class SysConfig extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
-
-    /** 参数主键 */
-    @Excel(name = "参数主键", cellType = ColumnType.NUMERIC)
-    private Long configId;
 
     /** 参数名称 */
     @Excel(name = "参数名称")
@@ -38,16 +33,6 @@ public class SysConfig extends BaseEntity
     /** 系统内置（Y是 N否） */
     @Excel(name = "系统内置", readConverterExp = "Y=是,N=否")
     private String configType;
-
-    public Long getConfigId()
-    {
-        return configId;
-    }
-
-    public void setConfigId(Long configId)
-    {
-        this.configId = configId;
-    }
 
     @NotBlank(message = "参数名称不能为空")
     @Size(min = 0, max = 100, message = "参数名称不能超过100个字符")
@@ -98,7 +83,7 @@ public class SysConfig extends BaseEntity
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("configId", getConfigId())
+            .append("configId", getId())
             .append("configName", getConfigName())
             .append("configKey", getConfigKey())
             .append("configValue", getConfigValue())

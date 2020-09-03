@@ -1,9 +1,9 @@
 package com.superman.framework.shiro.web.session;
 
-import com.superman.common.constant.ShiroConstants;
-import com.superman.common.utils.StringUtils;
-import com.superman.common.utils.bean.BeanUtils;
-import com.superman.common.utils.spring.SpringUtils;
+import com.superman.constant.ShiroConstants;
+import com.superman.utils.StringUtils;
+import com.superman.utils.bean.BeanUtils;
+import com.superman.utils.spring.SpringUtils;
 import com.superman.framework.shiro.session.OnlineSession;
 import com.superman.system.domain.SysUserOnline;
 import com.superman.system.service.ISysUserOnlineService;

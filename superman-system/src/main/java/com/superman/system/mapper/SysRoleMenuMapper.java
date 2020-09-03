@@ -26,7 +26,7 @@ public interface SysRoleMenuMapper
      * @param ids 需要删除的数据ID
      * @return 结果
      */
-    public int deleteRoleMenu(Long[] ids);
+    public int deleteRoleMenu(String[] ids);
     
     /**
      * 查询菜单使用数量
@@ -34,7 +34,7 @@ public interface SysRoleMenuMapper
      * @param menuId 菜单ID
      * @return 结果
      */
-    public int selectCountRoleMenuByMenuId(Long menuId);
+    public int selectCountRoleMenuByMenuId(String menuId);
     
     /**
      * 批量新增角色菜单信息

@@ -1,6 +1,6 @@
 package com.superman.quartz.util;
 
-import com.superman.common.utils.bean.BeanUtils;
+import com.superman.utils.bean.BeanUtils;
 import com.superman.quartz.domain.SysJob;
 import com.superman.quartz.domain.SysJobLog;
 import com.superman.quartz.service.ISysJobLogService;

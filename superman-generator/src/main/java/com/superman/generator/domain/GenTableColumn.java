@@ -1,7 +1,7 @@
 package com.superman.generator.domain;
 
-import com.superman.common.core.domain.BaseEntity;
-import com.superman.common.utils.StringUtils;
+import com.superman.core.domain.BaseEntity;
+import com.superman.utils.StringUtils;
 import javax.validation.constraints.NotBlank;
 
 
@@ -14,8 +14,6 @@ public class GenTableColumn extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 编号 */
-    private String columnId;
 
     /** 归属表编号 */
     private String tableId;
@@ -68,16 +66,6 @@ public class GenTableColumn extends BaseEntity
 
     /** 排序 */
     private Integer sort;
-
-    public void setColumnId(String columnId)
-    {
-        this.columnId = columnId;
-    }
-
-    public String getColumnId()
-    {
-        return columnId;
-    }
 
     public void setTableId(String tableId)
     {

@@ -50,5 +50,5 @@ public interface GenTableColumnMapper
      * @param ids 需要删除的数据ID
      * @return 结果
      */
-    public int deleteGenTableColumnByIds(Long[] ids);
+    public int deleteGenTableColumnByIds(String[] ids);
 }

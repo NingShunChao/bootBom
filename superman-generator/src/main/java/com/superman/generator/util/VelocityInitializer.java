@@ -1,6 +1,6 @@
 package com.superman.generator.util;
 
-import com.superman.common.constant.CommonConstant;
+import com.superman.constant.CommonConstant;
 import java.util.Properties;
 import org.apache.velocity.app.Velocity;
 

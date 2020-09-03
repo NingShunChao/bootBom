@@ -1,5 +1,6 @@
 package com.superman.system.service.impl;
 
+import com.superman.system.domain.SysDictData;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,22 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ruoyi.common.constant.UserConstants;
-import com.ruoyi.common.core.domain.Ztree;
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.common.exception.BusinessException;
-import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.system.domain.SysDictData;
-import com.ruoyi.system.domain.SysDictType;
-import com.ruoyi.system.mapper.SysDictDataMapper;
-import com.ruoyi.system.mapper.SysDictTypeMapper;
-import com.ruoyi.system.service.ISysDictTypeService;
-import com.ruoyi.system.utils.DictUtils;
+import com.superman.constant.UserConstant;
+import com.superman.core.domain.ZtreeDomain;
+import com.superman.exception.BusinessException;
+import com.superman.utils.StringUtils;
+import com.superman.system.domain.SysDictType;
+import com.superman.system.mapper.SysDictDataMapper;
+import com.superman.system.mapper.SysDictTypeMapper;
+import com.superman.system.service.ISysDictTypeService;
+import com.superman.system.utils.DictUtils;
 
 /**
  * 字典 业务层处理
  * 
- * @author ruoyi
+ * @author superman
  */
 @Service
 public class SysDictTypeServiceImpl implements ISysDictTypeService
@@ -102,7 +101,7 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService
      * @return 字典类型
      */
     @Override
-    public SysDictType selectDictTypeById(Long dictId)
+    public SysDictType selectDictTypeById(String dictId)
     {
         return dictTypeMapper.selectDictTypeById(dictId);
     }
@@ -128,8 +127,8 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService
     @Override
     public int deleteDictTypeByIds(String ids)
     {
-        Long[] dictIds = Convert.toLongArray(ids);
-        for (Long dictId : dictIds)
+        String[] dictIds = ids.split(",");
+        for (String dictId : dictIds)
         {
             SysDictType dictType = selectDictTypeById(dictId);
             if (dictDataMapper.countDictDataByType(dictType.getDictType()) > 0)
@@ -181,7 +180,7 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService
     @Transactional
     public int updateDictType(SysDictType dictType)
     {
-        SysDictType oldDict = dictTypeMapper.selectDictTypeById(dictType.getDictId());
+        SysDictType oldDict = dictTypeMapper.selectDictTypeById(dictType.getId());
         dictDataMapper.updateDictDataType(oldDict.getDictType(), dictType.getDictType());
         int row = dictTypeMapper.updateDictType(dictType);
         if (row > 0)
@@ -200,13 +199,13 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService
     @Override
     public String checkDictTypeUnique(SysDictType dict)
     {
-        Long dictId = StringUtils.isNull(dict.getDictId()) ? -1L : dict.getDictId();
+        String dictId = StringUtils.isNull(dict.getId()) ? "-1" : dict.getId();
         SysDictType dictType = dictTypeMapper.checkDictTypeUnique(dict.getDictType());
-        if (StringUtils.isNotNull(dictType) && dictType.getDictId().longValue() != dictId.longValue())
+        if (StringUtils.isNotNull(dictType) && !dictType.getId().equals(dictId))
         {
-            return UserConstants.DICT_TYPE_NOT_UNIQUE;
+            return UserConstant.DICT_TYPE_NOT_UNIQUE;
         }
-        return UserConstants.DICT_TYPE_UNIQUE;
+        return UserConstant.DICT_TYPE_UNIQUE;
     }
 
     /**
@@ -216,22 +215,22 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService
      * @return 所有字典类型
      */
     @Override
-    public List<Ztree> selectDictTree(SysDictType dictType)
+    public List<ZtreeDomain> selectDictTree(SysDictType dictType)
     {
-        List<Ztree> ztrees = new ArrayList<Ztree>();
+        List<ZtreeDomain> ZtreeDomains = new ArrayList<ZtreeDomain>();
         List<SysDictType> dictList = dictTypeMapper.selectDictTypeList(dictType);
         for (SysDictType dict : dictList)
         {
-            if (UserConstants.DICT_NORMAL.equals(dict.getStatus()))
+            if (UserConstant.DICT_NORMAL.equals(dict.getStatus()))
             {
-                Ztree ztree = new Ztree();
-                ztree.setId(dict.getDictId());
-                ztree.setName(transDictName(dict));
-                ztree.setTitle(dict.getDictType());
-                ztrees.add(ztree);
+                ZtreeDomain ZtreeDomain = new ZtreeDomain();
+                ZtreeDomain.setId(dict.getId());
+                ZtreeDomain.setName(transDictName(dict));
+                ZtreeDomain.setTitle(dict.getDictType());
+                ZtreeDomains.add(ZtreeDomain);
             }
         }
-        return ztrees;
+        return ZtreeDomains;
     }
 
     public String transDictName(SysDictType dictType)

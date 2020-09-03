@@ -1,5 +1,9 @@
 package com.superman.quartz.service.impl;
 
+import com.superman.utils.text.Convert;
+import com.superman.quartz.domain.SysJobLog;
+import com.superman.quartz.mapper.SysJobLogMapper;
+import com.superman.quartz.service.ISysJobLogService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +40,7 @@ public class SysJobLogServiceImpl implements ISysJobLogService
      * @return 调度任务日志对象信息
      */
     @Override
-    public SysJobLog selectJobLogById(Long jobLogId)
+    public SysJobLog selectJobLogById(String jobLogId)
     {
         return jobLogMapper.selectJobLogById(jobLogId);
     }
@@ -70,7 +74,7 @@ public class SysJobLogServiceImpl implements ISysJobLogService
      * @param jobId 调度日志ID
      */
     @Override
-    public int deleteJobLogById(Long jobId)
+    public int deleteJobLogById(String jobId)
     {
         return jobLogMapper.deleteJobLogById(jobId);
     }

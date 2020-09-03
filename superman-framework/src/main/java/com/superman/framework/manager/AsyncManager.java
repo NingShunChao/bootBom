@@ -1,7 +1,7 @@
 package com.superman.framework.manager;
 
-import com.superman.common.utils.Threads;
-import com.superman.common.utils.spring.SpringUtils;
+import com.superman.utils.Threads;
+import com.superman.utils.spring.SpringUtils;
 import java.util.TimerTask;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;

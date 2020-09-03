@@ -1,8 +1,8 @@
 package com.superman.system.mapper;
 
+import com.superman.system.domain.SysUserOnline;
 import java.util.List;
 
-import com.ruoyi.system.domain.SysUserOnline;
 
 /**
  * 在线用户 数据层

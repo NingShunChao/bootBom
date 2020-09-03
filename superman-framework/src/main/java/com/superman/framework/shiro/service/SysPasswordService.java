@@ -1,10 +1,10 @@
 package com.superman.framework.shiro.service;
 
-import com.superman.common.constant.CommonConstant;
-import com.superman.common.constant.ShiroConstants;
-import com.superman.common.exception.user.UserPasswordNotMatchException;
-import com.superman.common.exception.user.UserPasswordRetryLimitExceedException;
-import com.superman.common.utils.MessageUtils;
+import com.superman.constant.CommonConstant;
+import com.superman.constant.ShiroConstants;
+import com.superman.exception.user.UserPasswordNotMatchException;
+import com.superman.exception.user.UserPasswordRetryLimitExceedException;
+import com.superman.utils.MessageUtils;
 import com.superman.framework.manager.AsyncManager;
 import com.superman.framework.manager.factory.AsyncFactory;
 import com.superman.system.domain.SysUser;

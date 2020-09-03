@@ -373,24 +373,24 @@
 
     <!-- 七牛云 -->
     <!--<dependency>-->
-      <!--<groupId>com.qiniu</groupId>-->
-      <!--<artifactId>qiniu-java-sdk</artifactId>-->
-      <!--<version>[7.2.0, 7.2.99]</version>-->
+    <!--<groupId>com.qiniu</groupId>-->
+    <!--<artifactId>qiniu-java-sdk</artifactId>-->
+    <!--<version>[7.2.0, 7.2.99]</version>-->
     <!--</dependency>-->
 
     <!--spring boot集成mybatis-plus所需依赖包-->
-<!--    <dependency>-->
-<!--      <groupId>com.baomidou</groupId>-->
-<!--      <artifactId>mybatis-plus-boot-starter</artifactId>-->
-<!--      <version>3.1.0</version>-->
-<!--    </dependency>-->
+    <!--    <dependency>-->
+    <!--      <groupId>com.baomidou</groupId>-->
+    <!--      <artifactId>mybatis-plus-boot-starter</artifactId>-->
+    <!--      <version>3.1.0</version>-->
+    <!--    </dependency>-->
 
     <!--代码生成依赖-->
-<!--    <dependency>-->
-<!--      <groupId>com.baomidou</groupId>-->
-<!--      <artifactId>mybatis-plus-generator</artifactId>-->
-<!--      <version>3.1.1</version>-->
-<!--    </dependency>-->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus-generator</artifactId>
+      <version>3.1.1</version>
+    </dependency>
 
     <!--这个依赖用于生成代码做模版，默认是velocity-->
     <dependency>

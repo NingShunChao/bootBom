@@ -1,7 +1,7 @@
 package com.superman.framework.util;
 
-import com.superman.common.json.JSON;
-import com.superman.common.utils.IpUtils;
+import com.superman.json.JSON;
+import com.superman.utils.IpUtils;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Map;

@@ -1,5 +1,6 @@
 package com.superman.quartz.service;
 
+import com.superman.quartz.domain.SysJobLog;
 import java.util.List;
 
 
@@ -25,7 +26,7 @@ public interface ISysJobLogService
      * @param jobLogId 调度任务日志ID
      * @return 调度任务日志对象信息
      */
-    public SysJobLog selectJobLogById(Long jobLogId);
+    public SysJobLog selectJobLogById(String jobLogId);
 
     /**
      * 新增任务日志
@@ -48,7 +49,7 @@ public interface ISysJobLogService
      * @param jobId 调度日志ID
      * @return 结果
      */
-    public int deleteJobLogById(Long jobId);
+    public int deleteJobLogById(String jobId);
     
     /**
      * 清空任务日志

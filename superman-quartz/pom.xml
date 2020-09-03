@@ -19,6 +19,12 @@
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.superman</groupId>
+      <artifactId>superman-framework</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
     <!-- 定时任务 -->
     <dependency>
       <groupId>org.quartz-scheduler</groupId>

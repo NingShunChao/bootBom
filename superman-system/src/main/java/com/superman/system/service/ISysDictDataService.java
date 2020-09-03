@@ -1,8 +1,9 @@
 package com.superman.system.service;
 
+import com.superman.system.domain.SysDictData;
 import java.util.List;
 
-import com.ruoyi.system.domain.SysDictData;
+
 
 /**
  * 字典 业务层
@@ -34,7 +35,7 @@ public interface ISysDictDataService
      * @param dictCode 字典数据ID
      * @return 字典数据
      */
-    public SysDictData selectDictDataById(Long dictCode);
+    public SysDictData selectDictDataById(String dictCode);
 
     /**
      * 批量删除字典数据

@@ -1,8 +1,8 @@
 package com.superman.system.mapper;
 
+import com.superman.system.domain.SysDictType;
 import java.util.List;
 
-import com.ruoyi.system.domain.SysDictType;
 
 /**
  * 字典表 数据层
@@ -32,7 +32,7 @@ public interface SysDictTypeMapper
      * @param dictId 字典类型ID
      * @return 字典类型
      */
-    public SysDictType selectDictTypeById(Long dictId);
+    public SysDictType selectDictTypeById(String dictId);
 
     /**
      * 根据字典类型查询信息
@@ -48,7 +48,7 @@ public interface SysDictTypeMapper
      * @param dictId 字典ID
      * @return 结果
      */
-    public int deleteDictTypeById(Long dictId);
+    public int deleteDictTypeById(String dictId);
 
     /**
      * 批量删除字典类型
@@ -56,7 +56,7 @@ public interface SysDictTypeMapper
      * @param ids 需要删除的数据
      * @return 结果
      */
-    public int deleteDictTypeByIds(Long[] ids);
+    public int deleteDictTypeByIds(String[] ids);
 
     /**
      * 新增字典类型信息

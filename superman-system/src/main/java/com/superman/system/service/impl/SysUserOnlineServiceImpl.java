@@ -1,16 +1,16 @@
 package com.superman.system.service.impl;
 
+import com.superman.system.domain.SysUserOnline;
+import com.superman.system.mapper.SysUserOnlineMapper;
+import com.superman.system.service.ISysUserOnlineService;
+import com.superman.utils.DateUtils;
+import com.superman.utils.StringUtils;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ruoyi.common.utils.DateUtils;
-import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.system.domain.SysUserOnline;
-import com.ruoyi.system.mapper.SysUserOnlineMapper;
-import com.ruoyi.system.service.ISysUserOnlineService;
 
 /**
  * 在线用户 服务层处理

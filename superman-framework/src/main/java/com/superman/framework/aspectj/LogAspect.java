@@ -1,11 +1,11 @@
 package com.superman.framework.aspectj;
 
 
-import com.superman.common.annotation.Log;
-import com.superman.common.enums.BusinessStatus;
-import com.superman.common.json.JSON;
-import com.superman.common.utils.ServletUtils;
-import com.superman.common.utils.StringUtils;
+import com.superman.annotation.Log;
+import com.superman.enums.BusinessStatus;
+import com.superman.json.JSON;
+import com.superman.utils.ServletUtils;
+import com.superman.utils.StringUtils;
 import com.superman.framework.manager.AsyncManager;
 import com.superman.framework.manager.factory.AsyncFactory;
 import com.superman.framework.util.ShiroUtils;
@@ -37,7 +37,7 @@ public class LogAspect {
   /**
    * 配置织入点
    */
-  @Pointcut("@annotation(com.superman.common.annotation.Log)")
+  @Pointcut("@annotation(com.superman.annotation.Log)")
   public void logPointCut(){
   }
 

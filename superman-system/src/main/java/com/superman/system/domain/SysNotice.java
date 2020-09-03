@@ -1,6 +1,6 @@
 package com.superman.system.domain;
 
-import com.superman.common.core.domain.BaseEntity;
+import com.superman.core.domain.BaseEntity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 

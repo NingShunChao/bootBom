@@ -1,10 +1,10 @@
 package com.superman.system.mapper;
 
+import com.superman.system.domain.SysMenu;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.ruoyi.system.domain.SysMenu;
 
 /**
  * 菜单表 数据层
@@ -26,7 +26,7 @@ public interface SysMenuMapper
      * @param userId 用户ID
      * @return 菜单列表
      */
-    public List<SysMenu> selectMenuAllByUserId(Long userId);
+    public List<SysMenu> selectMenuAllByUserId(String userId);
 
     /**
      * 查询系统正常显示菜单（不含按钮）
@@ -41,7 +41,7 @@ public interface SysMenuMapper
      * @param userId 用户ID
      * @return 菜单列表
      */
-    public List<SysMenu> selectMenusByUserId(Long userId);
+    public List<SysMenu> selectMenusByUserId(String userId);
 
     /**
      * 根据用户ID查询权限
@@ -49,7 +49,7 @@ public interface SysMenuMapper
      * @param userId 用户ID
      * @return 权限列表
      */
-    public List<String> selectPermsByUserId(Long userId);
+    public List<String> selectPermsByUserId(String userId);
 
     /**
      * 根据角色ID查询菜单
@@ -57,7 +57,7 @@ public interface SysMenuMapper
      * @param roleId 角色ID
      * @return 菜单列表
      */
-    public List<String> selectMenuTree(Long roleId);
+    public List<String> selectMenuTree(String roleId);
 
     /**
      * 查询系统菜单列表
@@ -81,7 +81,7 @@ public interface SysMenuMapper
      * @param menuId 菜单ID
      * @return 结果
      */
-    public int deleteMenuById(Long menuId);
+    public int deleteMenuById(String menuId);
 
     /**
      * 根据菜单ID查询信息
@@ -89,7 +89,7 @@ public interface SysMenuMapper
      * @param menuId 菜单ID
      * @return 菜单信息
      */
-    public SysMenu selectMenuById(Long menuId);
+    public SysMenu selectMenuById(String menuId);
 
     /**
      * 查询菜单数量
@@ -97,7 +97,7 @@ public interface SysMenuMapper
      * @param parentId 菜单父ID
      * @return 结果
      */
-    public int selectCountMenuByParentId(Long parentId);
+    public int selectCountMenuByParentId(String parentId);
 
     /**
      * 新增菜单信息
@@ -123,5 +123,5 @@ public interface SysMenuMapper
      * @return 结果
      */
     public SysMenu checkMenuNameUnique(@Param("menuName") String menuName,
-        @Param("parentId") Long parentId);
+        @Param("parentId") String parentId);
 }

@@ -1,6 +1,6 @@
 package com.superman.framework.datasource;
 
-import com.superman.common.config.DynamicDataSourceConfig;
+import com.superman.config.DynamicDataSourceConfig;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;

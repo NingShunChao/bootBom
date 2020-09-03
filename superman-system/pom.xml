@@ -18,8 +18,15 @@
     <dependency>
       <groupId>com.superman</groupId>
       <artifactId>superman-common</artifactId>
-      <version>${superman.version}</version>
+      <version>0.0.1-SNAPSHOT</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.superman</groupId>
+      <artifactId>superman-framework</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
   </dependencies>
 
 

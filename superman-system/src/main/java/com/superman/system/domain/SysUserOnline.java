@@ -1,7 +1,7 @@
 package com.superman.system.domain;
 
-import com.superman.common.core.domain.BaseEntity;
-import com.superman.common.enums.OnlineStatus;
+import com.superman.core.domain.BaseEntity;
+import com.superman.enums.OnlineStatus;
 import java.util.Date;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;

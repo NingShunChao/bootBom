@@ -1,12 +1,12 @@
 package com.superman.quartz.domain;
 
+import com.superman.annotation.Excel;
+import com.superman.core.domain.BaseEntity;
 import java.util.Date;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.ruoyi.common.annotation.Excel;
-import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
  * 定时任务调度日志表 sys_job_log
@@ -16,10 +16,6 @@ import com.ruoyi.common.core.domain.BaseEntity;
 public class SysJobLog extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
-
-    /** ID */
-    @Excel(name = "日志序号")
-    private Long jobLogId;
 
     /** 任务名称 */
     @Excel(name = "任务名称")
@@ -50,16 +46,6 @@ public class SysJobLog extends BaseEntity
 
     /** 结束时间 */
     private Date endTime;
-
-    public Long getJobLogId()
-    {
-        return jobLogId;
-    }
-
-    public void setJobLogId(Long jobLogId)
-    {
-        this.jobLogId = jobLogId;
-    }
 
     public String getJobName()
     {
@@ -144,7 +130,6 @@ public class SysJobLog extends BaseEntity
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("jobLogId", getJobLogId())
             .append("jobName", getJobName())
             .append("jobGroup", getJobGroup())
             .append("jobMessage", getJobMessage())

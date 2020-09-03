@@ -1,18 +1,19 @@
 package com.superman.system.service.impl;
 
+import com.superman.constant.UserConstant;
+import com.superman.exception.BusinessException;
+import com.superman.system.domain.SysPost;
+import com.superman.system.mapper.SysPostMapper;
+import com.superman.system.mapper.SysUserPostMapper;
+import com.superman.system.service.ISysPostService;
+import com.superman.utils.StringUtils;
+import com.superman.utils.text.Convert;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ruoyi.common.constant.UserConstants;
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.common.exception.BusinessException;
-import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.system.domain.SysPost;
-import com.ruoyi.system.mapper.SysPostMapper;
-import com.ruoyi.system.mapper.SysUserPostMapper;
-import com.ruoyi.system.service.ISysPostService;
+
 
 /**
  * 岗位信息 服务层处理
@@ -58,7 +59,7 @@ public class SysPostServiceImpl implements ISysPostService
      * @return 岗位列表
      */
     @Override
-    public List<SysPost> selectPostsByUserId(Long userId)
+    public List<SysPost> selectPostsByUserId(String userId)
     {
         List<SysPost> userPosts = postMapper.selectPostsByUserId(userId);
         List<SysPost> posts = postMapper.selectPostAll();
@@ -66,7 +67,7 @@ public class SysPostServiceImpl implements ISysPostService
         {
             for (SysPost userRole : userPosts)
             {
-                if (post.getPostId().longValue() == userRole.getPostId().longValue())
+                if (post.getPostId().equals(userRole.getPostId()))
                 {
                     post.setFlag(true);
                     break;
@@ -83,7 +84,7 @@ public class SysPostServiceImpl implements ISysPostService
      * @return 角色对象信息
      */
     @Override
-    public SysPost selectPostById(Long postId)
+    public SysPost selectPostById(String postId)
     {
         return postMapper.selectPostById(postId);
     }
@@ -97,8 +98,8 @@ public class SysPostServiceImpl implements ISysPostService
     @Override
     public int deletePostByIds(String ids) throws BusinessException
     {
-        Long[] postIds = Convert.toLongArray(ids);
-        for (Long postId : postIds)
+        String[] postIds = ids.split(",");
+        for (String postId : postIds)
         {
             SysPost post = selectPostById(postId);
             if (countUserPostById(postId) > 0)
@@ -140,7 +141,7 @@ public class SysPostServiceImpl implements ISysPostService
      * @return 结果
      */
     @Override
-    public int countUserPostById(Long postId)
+    public int countUserPostById(String postId)
     {
         return userPostMapper.countUserPostById(postId);
     }
@@ -154,13 +155,12 @@ public class SysPostServiceImpl implements ISysPostService
     @Override
     public String checkPostNameUnique(SysPost post)
     {
-        Long postId = StringUtils.isNull(post.getPostId()) ? -1L : post.getPostId();
+        String postId = StringUtils.isNull(post.getPostId()) ? "-1" : post.getPostId();
         SysPost info = postMapper.checkPostNameUnique(post.getPostName());
-        if (StringUtils.isNotNull(info) && info.getPostId().longValue() != postId.longValue())
-        {
-            return UserConstants.POST_NAME_NOT_UNIQUE;
+        if (StringUtils.isNotNull(info) && !info.getPostId().equals(postId)) {
+            return UserConstant.POST_NAME_NOT_UNIQUE;
         }
-        return UserConstants.POST_NAME_UNIQUE;
+        return UserConstant.POST_NAME_UNIQUE;
     }
 
     /**
@@ -172,12 +172,12 @@ public class SysPostServiceImpl implements ISysPostService
     @Override
     public String checkPostCodeUnique(SysPost post)
     {
-        Long postId = StringUtils.isNull(post.getPostId()) ? -1L : post.getPostId();
+        String postId = StringUtils.isNull(post.getPostId()) ? "-1" : post.getPostId();
         SysPost info = postMapper.checkPostCodeUnique(post.getPostCode());
-        if (StringUtils.isNotNull(info) && info.getPostId().longValue() != postId.longValue())
+        if (StringUtils.isNotNull(info) && !info.getPostId().equals(postId))
         {
-            return UserConstants.POST_CODE_NOT_UNIQUE;
+            return UserConstant.POST_CODE_NOT_UNIQUE;
         }
-        return UserConstants.POST_CODE_UNIQUE;
+        return UserConstant.POST_CODE_UNIQUE;
     }
 }

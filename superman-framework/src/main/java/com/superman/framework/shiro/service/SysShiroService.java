@@ -1,6 +1,6 @@
 package com.superman.framework.shiro.service;
 
-import com.superman.common.utils.StringUtils;
+import com.superman.utils.StringUtils;
 import com.superman.framework.shiro.session.OnlineSession;
 import com.superman.system.domain.SysUserOnline;
 import com.superman.system.service.ISysUserOnlineService;

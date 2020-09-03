@@ -1,19 +1,23 @@
 package com.superman.system.service.impl;
 
+import com.superman.system.domain.SysNotice;
+import com.superman.system.mapper.SysNoticeMapper;
+import com.superman.system.service.ISysNoticeService;
+import com.superman.utils.text.Convert;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.system.domain.SysNotice;
-import com.ruoyi.system.mapper.SysNoticeMapper;
-import com.ruoyi.system.service.ISysNoticeService;
+
+import com.superman.system.domain.SysNotice;
+import com.superman.system.mapper.SysNoticeMapper;
+import com.superman.system.service.ISysNoticeService;
 
 /**
  * 公告 服务层实现
  * 
- * @author ruoyi
+ * @author superman
  * @date 2018-06-25
  */
 @Service
@@ -29,7 +33,7 @@ public class SysNoticeServiceImpl implements ISysNoticeService
      * @return 公告信息
      */
     @Override
-    public SysNotice selectNoticeById(Long noticeId)
+    public SysNotice selectNoticeById(String noticeId)
     {
         return noticeMapper.selectNoticeById(noticeId);
     }

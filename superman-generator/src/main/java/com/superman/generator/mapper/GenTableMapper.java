@@ -42,7 +42,7 @@ public interface GenTableMapper
      * @param id 业务ID
      * @return 业务信息
      */
-    public GenTable selectGenTableById(Long id);
+    public GenTable selectGenTableById(String id);
 
     /**
      * 查询表名称业务信息
@@ -74,5 +74,5 @@ public interface GenTableMapper
      * @param ids 需要删除的数据ID
      * @return 结果
      */
-    public int deleteGenTableByIds(Long[] ids);
+    public int deleteGenTableByIds(String[] ids);
 }

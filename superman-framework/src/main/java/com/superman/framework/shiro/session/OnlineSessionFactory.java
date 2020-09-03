@@ -1,7 +1,7 @@
 package com.superman.framework.shiro.session;
 
-import com.superman.common.utils.IpUtils;
-import com.superman.common.utils.ServletUtils;
+import com.superman.utils.IpUtils;
+import com.superman.utils.ServletUtils;
 import eu.bitwalker.useragentutils.UserAgent;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.shiro.session.Session;

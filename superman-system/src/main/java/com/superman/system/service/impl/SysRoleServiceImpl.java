@@ -1,7 +1,7 @@
 package com.superman.system.service.impl;
 
-import com.superman.common.constant.UserConstant;
-import com.superman.common.utils.text.Convert;
+import com.superman.constant.UserConstant;
+import com.superman.utils.text.Convert;
 import com.superman.system.service.ISysRoleService;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.superman.common.annotation.DataScope;
-import com.superman.common.exception.BusinessException;
-import com.superman.common.utils.StringUtils;
-import com.superman.common.utils.spring.SpringUtils;
+import com.superman.annotation.DataScope;
+import com.superman.exception.BusinessException;
+import com.superman.utils.StringUtils;
+import com.superman.utils.spring.SpringUtils;
 import com.superman.system.domain.SysRole;
 import com.superman.system.domain.SysRoleDept;
 import com.superman.system.domain.SysRoleMenu;
@@ -25,7 +25,6 @@ import com.superman.system.mapper.SysRoleDeptMapper;
 import com.superman.system.mapper.SysRoleMapper;
 import com.superman.system.mapper.SysRoleMenuMapper;
 import com.superman.system.mapper.SysUserRoleMapper;
-import com.superman.system.service.ISysRoleService;
 
 /**
  * 角色 业务层处理
@@ -355,9 +354,9 @@ public class SysRoleServiceImpl implements ISysRoleService
      * @return 结果
      */
     @Override
-    public int deleteAuthUsers(Long roleId, String userIds)
+    public int deleteAuthUsers(String roleId, String userIds)
     {
-        return userRoleMapper.deleteUserRoleInfos(roleId, Convert.toLongArray(userIds));
+        return userRoleMapper.deleteUserRoleInfos(roleId, Convert.toStrArray(userIds));
     }
 
     /**
@@ -368,12 +367,12 @@ public class SysRoleServiceImpl implements ISysRoleService
      * @return 结果
      */
     @Override
-    public int insertAuthUsers(Long roleId, String userIds)
+    public int insertAuthUsers(String roleId, String userIds)
     {
-        Long[] users = Convert.toLongArray(userIds);
+        String[] users = Convert.toStrArray(userIds);
         // 新增用户与角色管理
         List<SysUserRole> list = new ArrayList<SysUserRole>();
-        for (Long userId : users)
+        for (String userId : users)
         {
             SysUserRole ur = new SysUserRole();
             ur.setUserId(userId);

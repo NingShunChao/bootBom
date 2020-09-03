@@ -1,8 +1,8 @@
 package com.superman.generator.domain;
 
-import com.superman.common.constant.GenConstants;
-import com.superman.common.core.domain.BaseEntity;
-import com.superman.common.utils.StringUtils;
+import com.superman.constant.GenConstants;
+import com.superman.core.domain.BaseEntity;
+import com.superman.utils.StringUtils;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -20,9 +20,6 @@ import org.apache.commons.lang3.ArrayUtils;
 public class GenTable extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
-
-    /** 编号 */
-    private String tableId;
 
     /** 表名称 */
     @NotBlank(message = "表名称不能为空")
@@ -77,16 +74,6 @@ public class GenTable extends BaseEntity
 
     /** 树名称字段 */
     private String treeName;
-
-    public String getTableId()
-    {
-        return tableId;
-    }
-
-    public void setTableId(String tableId)
-    {
-        this.tableId = tableId;
-    }
 
     public String getTableName()
     {

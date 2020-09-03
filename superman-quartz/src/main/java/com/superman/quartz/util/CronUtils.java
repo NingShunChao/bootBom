@@ -1,6 +1,5 @@
 package com.superman.quartz.util;
 
-import com.superman.common.utils.StringUtils;
 import java.text.ParseException;
 import java.util.Date;
 import org.quartz.CronExpression;

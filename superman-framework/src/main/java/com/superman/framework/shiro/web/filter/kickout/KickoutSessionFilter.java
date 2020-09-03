@@ -1,8 +1,8 @@
 package com.superman.framework.shiro.web.filter.kickout;
 
-import com.superman.common.constant.ShiroConstants;
-import com.superman.common.core.domain.AjaxResult;
-import com.superman.common.utils.ServletUtils;
+import com.superman.constant.ShiroConstants;
+import com.superman.core.domain.AjaxResult;
+import com.superman.utils.ServletUtils;
 import com.superman.framework.util.ShiroUtils;
 import com.superman.system.domain.SysUser;
 import java.io.IOException;

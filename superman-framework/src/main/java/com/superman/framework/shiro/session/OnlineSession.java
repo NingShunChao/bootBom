@@ -1,6 +1,6 @@
 package com.superman.framework.shiro.session;
 
-import com.superman.common.enums.OnlineStatus;
+import com.superman.enums.OnlineStatus;
 import org.apache.shiro.session.mgt.SimpleSession;
 
 /**

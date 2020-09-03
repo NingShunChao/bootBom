@@ -1,8 +1,8 @@
 package com.superman.framework.aspectj;
 
-import com.superman.common.annotation.DataScope;
-import com.superman.common.core.domain.BaseEntity;
-import com.superman.common.utils.StringUtils;
+import com.superman.annotation.DataScope;
+import com.superman.core.domain.BaseEntity;
+import com.superman.utils.StringUtils;
 import com.superman.framework.util.ShiroUtils;
 import com.superman.system.domain.SysRole;
 import com.superman.system.domain.SysUser;
@@ -54,7 +54,7 @@ public class DataScopeAspect {
   public static final String DATA_SCOPE = "dataScope";
 
   // 配置织入点
-  @Pointcut("@annotation(com.superman.common.annotation.DataScope)")
+  @Pointcut("@annotation(com.superman.annotation.DataScope)")
   public void dataScopePointCut()
   {
   }

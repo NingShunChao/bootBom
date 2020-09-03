@@ -1,15 +1,16 @@
 package com.superman.system.service.impl;
 
+import com.superman.system.domain.SysDictData;
+import com.superman.system.mapper.SysDictDataMapper;
+import com.superman.system.service.ISysDictDataService;
+import com.superman.system.utils.DictUtils;
+import com.superman.utils.text.Convert;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.system.domain.SysDictData;
-import com.ruoyi.system.mapper.SysDictDataMapper;
-import com.ruoyi.system.service.ISysDictDataService;
-import com.ruoyi.system.utils.DictUtils;
+
 
 /**
  * 字典 业务层处理
@@ -54,7 +55,7 @@ public class SysDictDataServiceImpl implements ISysDictDataService
      * @return 字典数据
      */
     @Override
-    public SysDictData selectDictDataById(Long dictCode)
+    public SysDictData selectDictDataById(String dictCode)
     {
         return dictDataMapper.selectDictDataById(dictCode);
     }

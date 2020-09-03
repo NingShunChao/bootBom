@@ -1,10 +1,10 @@
 package com.superman.generator.service.impl;
 
-import com.superman.common.constant.CommonConstant;
-import com.superman.common.constant.GenConstants;
-import com.superman.common.exception.BusinessException;
-import com.superman.common.utils.StringUtils;
-import com.superman.common.utils.text.Convert;
+import com.superman.constant.CommonConstant;
+import com.superman.constant.GenConstants;
+import com.superman.exception.BusinessException;
+import com.superman.utils.StringUtils;
+import com.superman.utils.text.Convert;
 import com.superman.generator.domain.GenTable;
 import com.superman.generator.domain.GenTableColumn;
 import com.superman.generator.mapper.GenTableColumnMapper;

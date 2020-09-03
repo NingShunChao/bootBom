@@ -1,8 +1,8 @@
 package com.superman.system.utils;
 
-import com.superman.common.constant.CommonConstant;
-import com.superman.common.utils.CacheUtils;
-import com.superman.common.utils.StringUtils;
+import com.superman.constant.CommonConstant;
+import com.superman.utils.CacheUtils;
+import com.superman.utils.StringUtils;
 import com.superman.system.domain.SysDictData;
 import java.util.List;
 

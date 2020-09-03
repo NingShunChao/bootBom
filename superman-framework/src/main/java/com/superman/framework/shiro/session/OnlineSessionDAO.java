@@ -1,6 +1,6 @@
 package com.superman.framework.shiro.session;
 
-import com.superman.common.enums.OnlineStatus;
+import com.superman.enums.OnlineStatus;
 import com.superman.framework.manager.AsyncManager;
 import com.superman.framework.manager.factory.AsyncFactory;
 import com.superman.framework.shiro.service.SysShiroService;

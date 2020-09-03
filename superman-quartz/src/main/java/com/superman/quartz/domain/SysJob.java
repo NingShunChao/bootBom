@@ -1,7 +1,10 @@
 package com.superman.quartz.domain;
 
-import com.superman.common.annotation.Excel;
-import com.superman.common.enums.ColumnType;
+import com.superman.annotation.Excel;
+import com.superman.constant.ScheduleConstants;
+import com.superman.core.domain.BaseEntity;
+import com.superman.utils.StringUtils;
+import com.superman.quartz.util.CronUtils;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -21,10 +24,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 public class SysJob extends BaseEntity implements Serializable
 {
     private static final long serialVersionUID = 1L;
-
-    /** 任务ID */
-    @Excel(name = "任务序号", cellType = ColumnType.NUMERIC)
-    private Long jobId;
 
     /** 任务名称 */
     @Excel(name = "任务名称")
@@ -53,16 +52,6 @@ public class SysJob extends BaseEntity implements Serializable
     /** 任务状态（0正常 1暂停） */
     @Excel(name = "任务状态", readConverterExp = "0=正常,1=暂停")
     private String status;
-
-    public Long getJobId()
-    {
-        return jobId;
-    }
-
-    public void setJobId(Long jobId)
-    {
-        this.jobId = jobId;
-    }
 
     @NotBlank(message = "任务名称不能为空")
     @Size(min = 0, max = 64, message = "任务名称不能超过64个字符")
@@ -152,7 +141,6 @@ public class SysJob extends BaseEntity implements Serializable
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("jobId", getJobId())
             .append("jobName", getJobName())
             .append("jobGroup", getJobGroup())
             .append("cronExpression", getCronExpression())

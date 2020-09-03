@@ -1,8 +1,8 @@
 package com.superman.framework.aspectj;
 
-import com.superman.common.annotation.DataSource;
-import com.superman.common.config.DynamicDataSourceConfig;
-import com.superman.common.utils.StringUtils;
+import com.superman.annotation.DataSource;
+import com.superman.config.DynamicDataSourceConfig;
+import com.superman.utils.StringUtils;
 import java.lang.reflect.Method;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -25,8 +25,8 @@ public class DataSourceAspect {
 
   protected Logger logger = LoggerFactory.getLogger(getClass());
 
-  @Pointcut("@annotation(com.superman.common.annotation.DataSource)"
-      + "|| @within(com.superman.common.annotation.DataSource)")
+  @Pointcut("@annotation(com.superman.annotation.DataSource)"
+      + "|| @within(com.superman.annotation.DataSource)")
   public void dsPointCut(){}
 
   @Around("dsPointCut()")

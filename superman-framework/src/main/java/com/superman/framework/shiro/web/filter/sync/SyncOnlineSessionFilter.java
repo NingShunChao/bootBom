@@ -1,6 +1,6 @@
 package com.superman.framework.shiro.web.filter.sync;
 
-import com.superman.common.constant.ShiroConstants;
+import com.superman.constant.ShiroConstants;
 import com.superman.framework.shiro.session.OnlineSession;
 import com.superman.framework.shiro.session.OnlineSessionDAO;
 import javax.servlet.ServletRequest;

@@ -1,14 +1,15 @@
 package com.superman.system.service.impl;
 
+import com.superman.system.domain.SysOperLog;
+import com.superman.system.mapper.SysOperLogMapper;
+import com.superman.system.service.ISysOperLogService;
+import com.superman.utils.text.Convert;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.system.domain.SysOperLog;
-import com.ruoyi.system.mapper.SysOperLogMapper;
-import com.ruoyi.system.service.ISysOperLogService;
+
 
 /**
  * 操作日志 服务层处理

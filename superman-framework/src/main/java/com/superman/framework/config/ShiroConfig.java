@@ -1,8 +1,8 @@
 package com.superman.framework.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
-import com.superman.common.utils.StringUtils;
-import com.superman.common.utils.spring.SpringUtils;
+import com.superman.utils.StringUtils;
+import com.superman.utils.spring.SpringUtils;
 import com.superman.framework.shiro.realm.UserRealm;
 import com.superman.framework.shiro.session.OnlineSessionDAO;
 import com.superman.framework.shiro.session.OnlineSessionFactory;

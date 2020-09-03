@@ -1,6 +1,6 @@
 package com.superman.framework.shiro.web.filter;
 
-import com.superman.common.constant.CommonConstant;
+import com.superman.constant.CommonConstant;
 import java.io.Serializable;
 import java.util.Deque;
 
@@ -15,9 +15,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-import com.superman.common.constant.ShiroConstants;
-import com.superman.common.utils.MessageUtils;
-import com.superman.common.utils.StringUtils;
+import com.superman.constant.ShiroConstants;
+import com.superman.utils.MessageUtils;
+import com.superman.utils.StringUtils;
 import com.superman.framework.manager.AsyncManager;
 import com.superman.framework.manager.factory.AsyncFactory;
 import com.superman.framework.util.ShiroUtils;

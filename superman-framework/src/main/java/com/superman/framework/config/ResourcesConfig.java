@@ -1,10 +1,9 @@
 package com.superman.framework.config;
 
-import com.superman.common.config.Global;
-import com.superman.common.constant.CommonConstant;
+import com.superman.config.Global;
+import com.superman.constant.CommonConstant;
 import com.superman.framework.interceptor.RepeatSubmitInterceptor;
 import javax.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

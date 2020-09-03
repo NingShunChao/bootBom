@@ -1,6 +1,6 @@
 package com.superman.system.service.impl;
 
-import com.superman.common.utils.text.Convert;
+import com.superman.utils.text.Convert;
 import com.superman.system.domain.SysLogininfor;
 import com.superman.system.mapper.SysLogininforMapper;
 import com.superman.system.service.ISysLogininforService;

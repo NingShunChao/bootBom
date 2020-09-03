@@ -1,8 +1,9 @@
 package com.superman.system.mapper;
 
+import com.superman.system.domain.SysOperLog;
 import java.util.List;
 
-import com.ruoyi.system.domain.SysOperLog;
+
 
 /**
  * 操作日志 数据层

@@ -1,5 +1,11 @@
 package com.superman.system.service.impl;
 
+import com.superman.annotation.DataScope;
+import com.superman.constant.UserConstant;
+import com.superman.exception.BusinessException;
+import com.superman.utils.StringUtils;
+import com.superman.utils.security.Md5Utils;
+import com.superman.utils.text.Convert;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,29 +15,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ruoyi.common.annotation.DataScope;
-import com.ruoyi.common.constant.UserConstants;
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.common.exception.BusinessException;
-import com.ruoyi.common.utils.StringUtils;
-import com.ruoyi.common.utils.security.Md5Utils;
-import com.ruoyi.system.domain.SysPost;
-import com.ruoyi.system.domain.SysRole;
-import com.ruoyi.system.domain.SysUser;
-import com.ruoyi.system.domain.SysUserPost;
-import com.ruoyi.system.domain.SysUserRole;
-import com.ruoyi.system.mapper.SysPostMapper;
-import com.ruoyi.system.mapper.SysRoleMapper;
-import com.ruoyi.system.mapper.SysUserMapper;
-import com.ruoyi.system.mapper.SysUserPostMapper;
-import com.ruoyi.system.mapper.SysUserRoleMapper;
-import com.ruoyi.system.service.ISysConfigService;
-import com.ruoyi.system.service.ISysUserService;
+
+import com.superman.system.domain.SysPost;
+import com.superman.system.domain.SysRole;
+import com.superman.system.domain.SysUser;
+import com.superman.system.domain.SysUserPost;
+import com.superman.system.domain.SysUserRole;
+import com.superman.system.mapper.SysPostMapper;
+import com.superman.system.mapper.SysRoleMapper;
+import com.superman.system.mapper.SysUserMapper;
+import com.superman.system.mapper.SysUserPostMapper;
+import com.superman.system.mapper.SysUserRoleMapper;
+import com.superman.system.service.ISysConfigService;
+import com.superman.system.service.ISysUserService;
 
 /**
  * 用户 业务层处理
  * 
- * @author ruoyi
+ * @author superman
  */
 @Service
 public class SysUserServiceImpl implements ISysUserService
@@ -138,7 +139,7 @@ public class SysUserServiceImpl implements ISysUserService
      * @return 用户对象信息
      */
     @Override
-    public SysUser selectUserById(Long userId)
+    public SysUser selectUserById(String userId)
     {
         return userMapper.selectUserById(userId);
     }
@@ -150,7 +151,7 @@ public class SysUserServiceImpl implements ISysUserService
      * @return 用户和角色关联列表
      */
     @Override
-    public List<SysUserRole> selectUserRoleByUserId(Long userId)
+    public List<SysUserRole> selectUserRoleByUserId(String userId)
     {
         return userRoleMapper.selectUserRoleByUserId(userId);
     }
@@ -162,7 +163,7 @@ public class SysUserServiceImpl implements ISysUserService
      * @return 结果
      */
     @Override
-    public int deleteUserById(Long userId)
+    public int deleteUserById(String userId)
     {
         // 删除用户与角色关联
         userRoleMapper.deleteUserRoleByUserId(userId);
@@ -180,8 +181,8 @@ public class SysUserServiceImpl implements ISysUserService
     @Override
     public int deleteUserByIds(String ids) throws BusinessException
     {
-        Long[] userIds = Convert.toLongArray(ids);
-        for (Long userId : userIds)
+        String[] userIds = Convert.toStrArray(ids);
+        for (String userId : userIds)
         {
             checkUserAllowed(new SysUser(userId));
         }
@@ -216,7 +217,7 @@ public class SysUserServiceImpl implements ISysUserService
     @Override
     public boolean registerUser(SysUser user)
     {
-        user.setUserType(UserConstants.REGISTER_USER_TYPE);
+        user.setUserType(UserConstant.REGISTER_USER_TYPE);
         return userMapper.insertUser(user) > 0;
     }
 
@@ -230,7 +231,7 @@ public class SysUserServiceImpl implements ISysUserService
     @Transactional
     public int updateUser(SysUser user)
     {
-        Long userId = user.getUserId();
+        String userId = user.getUserId();
         // 删除用户与角色关联
         userRoleMapper.deleteUserRoleByUserId(userId);
         // 新增用户与角色管理
@@ -261,7 +262,7 @@ public class SysUserServiceImpl implements ISysUserService
      * @param roleIds 角色组
      */
     @Override
-    public void insertUserAuth(Long userId, Long[] roleIds)
+    public void insertUserAuth(String userId, String[] roleIds)
     {
         userRoleMapper.deleteUserRoleByUserId(userId);
         insertUserRole(userId, roleIds);
@@ -282,15 +283,15 @@ public class SysUserServiceImpl implements ISysUserService
     /**
      * 新增用户角色信息
      * 
-     * @param user 用户对象
+     * @param userId 用户对象
      */
-    public void insertUserRole(Long userId, Long[] roleIds)
+    public void insertUserRole(String userId, String[] roleIds)
     {
         if (StringUtils.isNotNull(roleIds))
         {
             // 新增用户与角色管理
             List<SysUserRole> list = new ArrayList<SysUserRole>();
-            for (Long roleId : roleIds)
+            for (String roleId : roleIds)
             {
                 SysUserRole ur = new SysUserRole();
                 ur.setUserId(userId);
@@ -311,12 +312,12 @@ public class SysUserServiceImpl implements ISysUserService
      */
     public void insertUserPost(SysUser user)
     {
-        Long[] posts = user.getPostIds();
+        String[] posts = user.getPostIds();
         if (StringUtils.isNotNull(posts))
         {
             // 新增用户与岗位管理
             List<SysUserPost> list = new ArrayList<SysUserPost>();
-            for (Long postId : posts)
+            for (String postId : posts)
             {
                 SysUserPost up = new SysUserPost();
                 up.setUserId(user.getUserId());
@@ -342,9 +343,9 @@ public class SysUserServiceImpl implements ISysUserService
         int count = userMapper.checkLoginNameUnique(loginName);
         if (count > 0)
         {
-            return UserConstants.USER_NAME_NOT_UNIQUE;
+            return UserConstant.USER_NAME_NOT_UNIQUE;
         }
-        return UserConstants.USER_NAME_UNIQUE;
+        return UserConstant.USER_NAME_UNIQUE;
     }
 
     /**
@@ -356,13 +357,13 @@ public class SysUserServiceImpl implements ISysUserService
     @Override
     public String checkPhoneUnique(SysUser user)
     {
-        Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
+        String userId = StringUtils.isNull(user.getUserId()) ? "-1" : user.getUserId();
         SysUser info = userMapper.checkPhoneUnique(user.getPhonenumber());
-        if (StringUtils.isNotNull(info) && info.getUserId().longValue() != userId.longValue())
+        if (StringUtils.isNotNull(info) && !info.getUserId().equals(userId))
         {
-            return UserConstants.USER_PHONE_NOT_UNIQUE;
+            return UserConstant.USER_PHONE_NOT_UNIQUE;
         }
-        return UserConstants.USER_PHONE_UNIQUE;
+        return UserConstant.USER_PHONE_UNIQUE;
     }
 
     /**
@@ -374,13 +375,13 @@ public class SysUserServiceImpl implements ISysUserService
     @Override
     public String checkEmailUnique(SysUser user)
     {
-        Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
+        String userId = StringUtils.isNull(user.getUserId()) ? "-1" : user.getUserId();
         SysUser info = userMapper.checkEmailUnique(user.getEmail());
-        if (StringUtils.isNotNull(info) && info.getUserId().longValue() != userId.longValue())
+        if (StringUtils.isNotNull(info) && !info.getUserId().equals(userId))
         {
-            return UserConstants.USER_EMAIL_NOT_UNIQUE;
+            return UserConstant.USER_EMAIL_NOT_UNIQUE;
         }
-        return UserConstants.USER_EMAIL_UNIQUE;
+        return UserConstant.USER_EMAIL_UNIQUE;
     }
 
     /**
@@ -404,7 +405,7 @@ public class SysUserServiceImpl implements ISysUserService
      * @return 结果
      */
     @Override
-    public String selectUserRoleGroup(Long userId)
+    public String selectUserRoleGroup(String userId)
     {
         List<SysRole> list = roleMapper.selectRolesByUserId(userId);
         StringBuffer idsStr = new StringBuffer();
@@ -426,7 +427,7 @@ public class SysUserServiceImpl implements ISysUserService
      * @return 结果
      */
     @Override
-    public String selectUserPostGroup(Long userId)
+    public String selectUserPostGroup(String userId)
     {
         List<SysPost> list = postMapper.selectPostsByUserId(userId);
         StringBuffer idsStr = new StringBuffer();

@@ -1,11 +1,11 @@
 package com.superman.framework.shiro.realm;
 
-import com.superman.common.exception.user.CaptchaException;
-import com.superman.common.exception.user.RoleBlockedException;
-import com.superman.common.exception.user.UserBlockedException;
-import com.superman.common.exception.user.UserNotExistsException;
-import com.superman.common.exception.user.UserPasswordNotMatchException;
-import com.superman.common.exception.user.UserPasswordRetryLimitExceedException;
+import com.superman.exception.user.CaptchaException;
+import com.superman.exception.user.RoleBlockedException;
+import com.superman.exception.user.UserBlockedException;
+import com.superman.exception.user.UserNotExistsException;
+import com.superman.exception.user.UserPasswordNotMatchException;
+import com.superman.exception.user.UserPasswordRetryLimitExceedException;
 import com.superman.framework.shiro.service.SysLoginService;
 import com.superman.framework.util.ShiroUtils;
 import com.superman.system.domain.SysUser;

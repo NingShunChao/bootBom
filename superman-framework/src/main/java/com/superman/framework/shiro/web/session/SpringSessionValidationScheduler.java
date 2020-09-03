@@ -1,6 +1,6 @@
 package com.superman.framework.shiro.web.session;
 
-import com.superman.common.utils.Threads;
+import com.superman.utils.Threads;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 

@@ -1,16 +1,16 @@
 package com.superman.generator.controller;
 
-import com.superman.common.annotation.Log;
-import com.superman.common.core.BaseController;
-import com.superman.common.core.domain.AjaxResult;
-import com.superman.common.core.page.TableDataInfo;
-import com.superman.common.enums.BusinessType;
-import com.superman.common.utils.text.Convert;
+import com.superman.annotation.Log;
+import com.superman.core.BaseController;
+import com.superman.core.domain.AjaxResult;
+import com.superman.core.page.TableDataInfo;
+import com.superman.enums.BusinessType;
+import com.superman.utils.text.Convert;
 import com.superman.generator.domain.GenTable;
 import com.superman.generator.domain.GenTableColumn;
 import com.superman.generator.service.IGenTableColumnService;
 import com.superman.generator.service.IGenTableService;
-import com.superman.common.utils.security.PermissionUtils;
+import com.superman.utils.security.PermissionUtils;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;

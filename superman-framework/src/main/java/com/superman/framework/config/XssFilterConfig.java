@@ -1,7 +1,7 @@
 package com.superman.framework.config;
 
-import com.superman.common.utils.StringUtils;
-import com.superman.common.xss.XssFilter;
+import com.superman.utils.StringUtils;
+import com.superman.xss.XssFilter;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.DispatcherType;

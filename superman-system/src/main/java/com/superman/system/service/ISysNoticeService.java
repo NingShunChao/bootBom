@@ -1,8 +1,8 @@
 package com.superman.system.service;
 
+import com.superman.system.domain.SysNotice;
 import java.util.List;
 
-import com.ruoyi.system.domain.SysNotice;
 
 /**
  * 公告 服务层
@@ -17,7 +17,7 @@ public interface ISysNoticeService
      * @param noticeId 公告ID
      * @return 公告信息
      */
-    public SysNotice selectNoticeById(Long noticeId);
+    public SysNotice selectNoticeById(String noticeId);
 
     /**
      * 查询公告列表

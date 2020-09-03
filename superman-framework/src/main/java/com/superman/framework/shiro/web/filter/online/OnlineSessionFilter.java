@@ -12,8 +12,8 @@ import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import com.superman.common.constant.ShiroConstants;
-import com.superman.common.enums.OnlineStatus;
+import com.superman.constant.ShiroConstants;
+import com.superman.enums.OnlineStatus;
 import com.superman.framework.shiro.session.OnlineSession;
 import com.superman.framework.shiro.session.OnlineSessionDAO;
 import com.superman.framework.util.ShiroUtils;

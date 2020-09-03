@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.superman.common.core.domain.BaseEntity;
+import com.superman.core.domain.BaseEntity;
 
 /**
  * 菜单权限表 sys_menu
@@ -18,10 +18,8 @@ import com.superman.common.core.domain.BaseEntity;
  */
 public class SysMenu extends BaseEntity
 {
-    private static final long serialVersionUID = 1L;
-
-    /** 菜单ID */
-    private Long menuId;
+    private static final String serialVersionUID = 1L;
+    
 
     /** 菜单名称 */
     private String menuName;
@@ -30,7 +28,7 @@ public class SysMenu extends BaseEntity
     private String parentName;
 
     /** 父菜单ID */
-    private Long parentId;
+    private String parentId;
 
     /** 显示顺序 */
     private String orderNum;
@@ -56,15 +54,7 @@ public class SysMenu extends BaseEntity
     /** 子菜单 */
     private List<SysMenu> children = new ArrayList<SysMenu>();
 
-    public Long getMenuId()
-    {
-        return menuId;
-    }
-
-    public void setMenuId(Long menuId)
-    {
-        this.menuId = menuId;
-    }
+    
 
     @NotBlank(message = "菜单名称不能为空")
     @Size(min = 0, max = 50, message = "菜单名称长度不能超过50个字符")
@@ -88,12 +78,12 @@ public class SysMenu extends BaseEntity
         this.parentName = parentName;
     }
 
-    public Long getParentId()
+    public String getParentId()
     {
         return parentId;
     }
 
-    public void setParentId(Long parentId)
+    public void setParentId(String parentId)
     {
         this.parentId = parentId;
     }
@@ -185,7 +175,7 @@ public class SysMenu extends BaseEntity
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("menuId", getMenuId())
+            .append("menuId", getId())
             .append("menuName", getMenuName())
             .append("parentId", getParentId())
             .append("orderNum", getOrderNum())

@@ -1,9 +1,9 @@
 package com.superman.system.domain;
 
-import com.superman.common.annotation.Excel;
-import com.superman.common.annotation.Excel.Type;
-import com.superman.common.core.domain.BaseEntity;
-import com.superman.common.enums.ColumnType;
+import com.superman.annotation.Excel;
+import com.superman.annotation.Excel.Type;
+import com.superman.core.domain.BaseEntity;
+import com.superman.enums.ColumnType;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class SysUser extends BaseEntity
     private String parentId;
 
     /** 角色ID */
-    private Long roleId;
+    private String roleId;
 
     /** 登录名称 */
     @Excel(name = "登录名称")
@@ -96,10 +96,10 @@ public class SysUser extends BaseEntity
     private List<SysRole> roles;
 
     /** 角色组 */
-    private Long[] roleIds;
+    private String[] roleIds;
 
     /** 岗位组 */
-    private Long[] postIds;
+    private String[] postIds;
 
     public SysUser()
     {
@@ -151,12 +151,12 @@ public class SysUser extends BaseEntity
         this.parentId = parentId;
     }
 
-    public Long getRoleId()
+    public String getRoleId()
     {
         return roleId;
     }
 
-    public void setRoleId(Long roleId)
+    public void setRoleId(String roleId)
     {
         this.roleId = roleId;
     }
@@ -323,22 +323,22 @@ public class SysUser extends BaseEntity
         this.roles = roles;
     }
 
-    public Long[] getRoleIds()
+    public String[] getRoleIds()
     {
         return roleIds;
     }
 
-    public void setRoleIds(Long[] roleIds)
+    public void setRoleIds(String[] roleIds)
     {
         this.roleIds = roleIds;
     }
 
-    public Long[] getPostIds()
+    public String[] getPostIds()
     {
         return postIds;
     }
 
-    public void setPostIds(Long[] postIds)
+    public void setPostIds(String[] postIds)
     {
         this.postIds = postIds;
     }

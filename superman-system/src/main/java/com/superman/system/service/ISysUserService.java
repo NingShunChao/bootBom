@@ -65,7 +65,7 @@ public interface ISysUserService
      * @param userId 用户ID
      * @return 用户对象信息
      */
-    public SysUser selectUserById(Long userId);
+    public SysUser selectUserById(String userId);
 
     /**
      * 通过用户ID查询用户和角色关联
@@ -73,7 +73,7 @@ public interface ISysUserService
      * @param userId 用户ID
      * @return 用户和角色关联列表
      */
-    public List<SysUserRole> selectUserRoleByUserId(Long userId);
+    public List<SysUserRole> selectUserRoleByUserId(String userId);
 
     /**
      * 通过用户ID删除用户
@@ -81,7 +81,7 @@ public interface ISysUserService
      * @param userId 用户ID
      * @return 结果
      */
-    public int deleteUserById(Long userId);
+    public int deleteUserById(String userId);
 
     /**
      * 批量删除用户信息
@@ -130,7 +130,7 @@ public interface ISysUserService
      * @param userId 用户ID
      * @param roleIds 角色组
      */
-    public void insertUserAuth(Long userId, Long[] roleIds);
+    public void insertUserAuth(String userId, String[] roleIds);
 
     /**
      * 修改用户密码信息
@@ -177,7 +177,7 @@ public interface ISysUserService
      * @param userId 用户ID
      * @return 结果
      */
-    public String selectUserRoleGroup(Long userId);
+    public String selectUserRoleGroup(String userId);
 
     /**
      * 根据用户ID查询用户所属岗位组
@@ -185,7 +185,7 @@ public interface ISysUserService
      * @param userId 用户ID
      * @return 结果
      */
-    public String selectUserPostGroup(Long userId);
+    public String selectUserPostGroup(String userId);
 
     /**
      * 导入用户数据

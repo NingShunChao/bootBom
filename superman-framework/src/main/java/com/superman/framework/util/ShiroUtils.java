@@ -1,11 +1,10 @@
 package com.superman.framework.util;
 
-import com.superman.common.utils.StringUtils;
-import com.superman.common.utils.bean.BeanUtils;
+import com.superman.utils.StringUtils;
+import com.superman.utils.bean.BeanUtils;
 import com.superman.system.domain.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
-import org.apache.shiro.mgt.RealmSecurityManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
@@ -63,9 +62,9 @@ public class ShiroUtils
 ////        realm.clearCachedAuthorizationInfo();
 ////    }
 
-    public static Long getUserId()
+    public static String getUserId()
     {
-        return getSysUser().getUserId().longValue();
+        return getSysUser().getUserId();
     }
 
     public static String getLoginName()
